@@ -39,3 +39,16 @@ async def get_room_info_by_id(
     url = f"{BASE_URL}/room/v1/Room/get_info"
     params = {"id": room_id}
     return await get(url, params=params, auth=auth, reqtype=reqtype, **kwargs)
+
+async def get_gift_config(*, auth=None, reqtype="web", **kwargs):
+    """获取礼物配置"""
+    url = f"{BASE_URL}/gift/v3/live/gift_config"
+    return await get(url, auth=auth, reqtype=reqtype, **kwargs)
+
+async def get_room_detail_by_room_id(
+    room_id: Union[int, str], *, auth=None, reqtype="web", **kwargs
+):
+    """根据房间号获取指定直播间信息"""
+    url = f"{BASE_URL}/xlive/web-room/v1/index/getInfoByRoom"
+    params = {"room_id": room_id}
+    return await get(url, params=params, auth=auth, reqtype=reqtype, **kwargs)
